@@ -1,0 +1,23 @@
+{
+    "name": "salyam/morningblue",
+    "description": "Parse BBCode string to HTML.",
+    "keywords": ["bbcode", "parser"],
+    "type": "library",
+	"license": "MIT",
+	"authors": [
+        {
+            "name": "Salyamosy, Andras",
+            "email": "salyamosy.andras@gmail.com"
+        }
+    ],
+	"autoload": {
+        "psr-4": {
+            "Salyam\\MorningBlue\\": "src/"
+        }
+    },
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^8.5"
+    },
+    "minimum-stability": "stable"
+}
