@@ -2,13 +2,13 @@
 
 namespace Salyam\MorningBlue;
 
-use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Blade;
 
-class BBCodeServiceProvider extends ServiceProvider implements DeferrableProvider
+class BBCodeServiceProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
+     * Registers a singleton BBCode parser object.
      *
      * @return void
      */
@@ -17,8 +17,20 @@ class BBCodeServiceProvider extends ServiceProvider implements DeferrableProvide
         $this->app->singleton(BBCode::class, function($app) {return new BBCode();});
     }
 
-    public function provides()
+    public function boot()
     {
-        return [BBCode::class];
+        Blade::directive('BBCode',
+            function()
+            {
+                return '<?php $RawBBCode = <<<\'EO_BBCODE\'';
+            }
+            );
+
+        Blade::directive('endBBCode',
+            function()
+            {
+                return "\n" . 'EO_BBCODE;' . "\n" . ' echo app(\Salyam\MorningBlue\BBCode::class)->ToHtml($RawBBCode); ?>';
+            }
+            );
     }
 }

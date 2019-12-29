@@ -1,13 +1,13 @@
 {
     "name": "salyam/morningblue",
     "description": "Parse BBCode string to HTML.",
-    "keywords": ["bbcode", "parser"],
+    "keywords": ["bbcode", "parser", "laravel"],
     "type": "library",
 	"license": "MIT",
 	"authors": [
         {
-            "name": "Salyamosy, Andras",
-            "email": "salyamosy.andras@gmail.com"
+            "name": "salyam",
+            "email": "salyamos@gmail.com"
         }
     ],
 	"autoload": {

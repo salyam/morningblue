@@ -34,9 +34,8 @@ MorningBlue contains a Laravel Service Provider which registers a global BBCode 
 This global object can be used in other ServiceProviders to register own BBCode tags.
 
 After downloading the package, a couple of extra steps are required to use its ServiceProvider.
-  * Edit config/app.php
-    * Find the 'providers' array in config/app.php.
-    * At the end of that array, copy the following line:
+  * Find the 'providers' array in config/app.php.
+  * At the end of that array, copy the following line:
         ```php
         \Salyam\MorningBlue\BBCodeServiceProvider::class,
         ```
@@ -64,6 +63,14 @@ class ExampleServiceProvider extends ServiceProvider
         // can use also app(BBcode::class)->AddSimpleParserRule();
     }
 }
+```
+
+MorningBlue also provides a Blade directive, which uses the global BBCode parser object provided by BBCodeServiceProvider.
+
+```blade
+  @BBCode
+    [b]This text will be bold[/b]
+  @endBBCode
 ```
 
 # Usage #
@@ -138,25 +145,54 @@ echo $parser->ToHtml("<p>This HTML tag will remain here.</p>", false);
            [li]Item1[/li]
            [li]Item2[/li]
          [/ul]
+    or
+   
+         [list]
+           [*]Item1
+           [*]Item2
+         [/list]
+         
   * Ordered lists:
 
          [ol]
            [li]Item1[/li]
            [li]Item2[/li]
          [/ol]
+    or
+  
+         [ol]
+           [*]Item1
+           [*]Item2
+         [/ol]
+
+## YouTube Videos ##
+
+  * Include a YouTube video:
+  
+          [youtube]video-id[/youtube]
+  * Include a YouTube video and specify its width and height:
+  
+          [youtube width=100 height=100]video-id[/youtube]
+          [youtube height=100 width=100]video-id[/youtube]
+          [youtube=100x100]video-id[/youtube]
 
 ## Source codes and syntax highlighting ##
 
+  * Preformatted code:
+
+        [code]<php echo "Hello World"; ?>[/code]
 MorningBlue supports the Prism syntax highlighter JavaScript library, but it is disabled by default.
  
   * The following code snippet will enable Prism support:
 
-         $parser->AddPrismSupport()
+       ```php
+       $parser->AddPrismSupport()
+       ```
   * After enabling Prism support, the following BBCode tag will be available:
       
          [code lang=php] <?php echo 'Hello world'; ?> [/code]
          
-   The lang parameter can be any of the supported languages of Prism.
+    The lang parameter can be any of the supported languages of Prism.
 
 # Adding custom BBCode tags #
 

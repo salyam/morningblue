@@ -166,7 +166,6 @@ final class BBCode
                     'replace' => '<img src="$3" style="width: $1px; height: $2px;">'
                 ],
 
-
             // URLs:
 
             'url-without-text' =>
@@ -201,7 +200,43 @@ final class BBCode
                 [
                     'pattern' => '\[li\](.*)\[\/li\]',
                     'replace' => '<li>$1</li>'
-                ]
+                ],
+            'list-item-alt' =>
+                [
+                    'pattern' => "\[\*\](.*)\n",
+                    'replace' => '<li>$1</li>'
+                ],
+
+            // Youtube
+
+            'youtube' =>
+                [
+                    'pattern' => '\[youtube\](.*)\[\/youtube\]',
+                    'replace' => '<iframe width="560" height="315" src="https://www.youtube.com/embed/$1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+                ],
+            'youtube-resized' =>
+                [
+                    'pattern' => '\[youtube width=(.*) height=(.*)\](.*)\[\/youtube\]',
+                    'replace' => '<iframe width="$1" height="$2" src="https://www.youtube.com/embed/$3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+                ],
+            'youtube-resized-alt-1' =>
+                [
+                    'pattern' => '\[youtube height=(.*) width=(.*)\](.*)\[\/youtube\]',
+                    'replace' => '<iframe width="$2" height="$1" src="https://www.youtube.com/embed/$3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+                ],
+            'youtube-resized-alt-2' =>
+                [
+                    'pattern' => '\[youtube=(.*)x(.*)\](.*)\[\/youtube\]',
+                    'replace' => '<iframe width="$1" height="$2" src="https://www.youtube.com/embed/$3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+                ],
+
+            // Other
+
+            'code' =>
+                [
+                    'pattern' => '\[code\](.*)\[\/code\]',
+                    'replace' => '<pre><code>$1</code></pre>'
+                ],
     ];
 
     /**

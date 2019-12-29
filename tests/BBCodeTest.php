@@ -92,6 +92,14 @@ final class MixedTests extends TestCase
     {
         $parser = new \Salyam\MorningBlue\BBCode();
         $this->assertEquals('<b>This text will be bold. <i>This text will be italic and bold.</i></b>', $parser->ToHtml('[b]This text will be bold. [i]This text will be italic and bold.[/i][/b]'));
+    }
 
+    public function testCanParseYoutubeTags()
+    {
+        $parser = new \Salyam\MorningBlue\BBCode();
+        $this->assertEquals('<iframe width="560" height="315" src="https://www.youtube.com/embed/Jo_-KoBiBG0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', $parser->ToHtml('[youtube]Jo_-KoBiBG0[/youtube]'));
+        $this->assertEquals('<iframe width="800" height="450" src="https://www.youtube.com/embed/Jo_-KoBiBG0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', $parser->ToHtml('[youtube width=800 height=450]Jo_-KoBiBG0[/youtube]'));
+        $this->assertEquals('<iframe width="800" height="450" src="https://www.youtube.com/embed/Jo_-KoBiBG0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', $parser->ToHtml('[youtube height=450 width=800]Jo_-KoBiBG0[/youtube]'));
+        $this->assertEquals('<iframe width="800" height="450" src="https://www.youtube.com/embed/Jo_-KoBiBG0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>', $parser->ToHtml('[youtube=800*450]Jo_-KoBiBG0[/youtube]'));
     }
 }
