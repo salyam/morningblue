@@ -20,16 +20,9 @@ class BBCodeServiceProvider extends ServiceProvider
     public function boot()
     {
         Blade::directive('BBCode',
-            function()
+            function($expression)
             {
-                return '<?php $RawBBCode = <<<\'EO_BBCODE\'';
-            }
-            );
-
-        Blade::directive('endBBCode',
-            function()
-            {
-                return "\n" . 'EO_BBCODE;' . "\n" . ' echo app(\Salyam\MorningBlue\BBCode::class)->ToHtml($RawBBCode); ?>';
+                return "<?php echo app(\Salyam\MorningBlue\BBCode::class)->ToHtml($expression); ?>";
             }
             );
     }

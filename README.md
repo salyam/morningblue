@@ -68,9 +68,8 @@ class ExampleServiceProvider extends ServiceProvider
 MorningBlue also provides a Blade directive, which uses the global BBCode parser object provided by BBCodeServiceProvider.
 
 ```blade
-  @BBCode
-    [b]This text will be bold[/b]
-  @endBBCode
+  @BBCode("[b]This text will be bold[/b]")
+  @BBCode($article->content)
 ```
 
 # Usage #
