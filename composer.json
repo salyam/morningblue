@@ -19,5 +19,12 @@
     "require-dev": {
         "phpunit/phpunit": "^8.5"
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "stable",
+    "extra" : {
+        "laravel" : {
+            "providers" : [
+                "Salyam\\MorningBlue\\BBCodeServiceProvider"
+            ]
+        }
+    }
 }

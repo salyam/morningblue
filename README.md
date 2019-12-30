@@ -32,15 +32,35 @@ include_once "path_to_BBCode.php";
 
 MorningBlue contains a Laravel Service Provider which registers a global BBCode parser object.
 This global object can be used in other ServiceProviders to register own BBCode tags.
+Composer should automatically install MorningBlue under Laravel, if it does not work check if Salyam\MorningBlue\BBCodeServiceProvider was added to config/app.php.
 
-After downloading the package, a couple of extra steps are required to use its ServiceProvider.
-  * Find the 'providers' array in config/app.php.
-  * At the end of that array, copy the following line:
-        ```php
-        \Salyam\MorningBlue\BBCodeServiceProvider::class,
-        ```
+# Usage #
 
-After installing the BBCodeServiceProvider, it is possible to use the global BBCode object with the following code:
+MorningBlue has only one purpose: parsing BBCode strings and returning a HTML code which can be rendered in the browser.
+
+MorningBlue BBCode parser can be used with the following code after installation:
+
+```php
+$parser = new \Salyam\MorningBlue\BBCode();
+echo $parser->ToHtml("[b]This text will be bold. [i]This text will be italic and bold.[/i][/b]");
+```
+
+The output of the previous code is the following:
+```HTML
+<b>This text will be bold. <i>This text will be italic and bold.</i></b>
+```
+
+By default, MorningBlue will escapes any HTML entities (`<, >, ', ", & `).
+This encoding can be disabled by passing a `false` value to the `toHtml` method of a BBCode parser object:
+```php
+$parser = new \Salyam\MorningBlue\BBCode();
+echo $parser->ToHtml("<p>This HTML tag will remain here.</p>", false);
+```
+
+## Laravel usage ##
+
+If MorningBlue was successfully installed under Laravel, it is possible to use a globally registered BBCode parser object:
+
 ```php
 use \Salyam\MorningBlue\BBCode;
 
@@ -70,29 +90,6 @@ MorningBlue also provides a Blade directive, which uses the global BBCode parser
 ```blade
   @BBCode("[b]This text will be bold[/b]")
   @BBCode($article->content)
-```
-
-# Usage #
-
-MorningBlue has only one purpose: parsing BBCode strings and returning a HTML code which can be rendered in the browser.
-
-MorningBlue BBCode parser can be used with the following code after installation:
-
-```php
-$parser = new \Salyam\MorningBlue\BBCode();
-echo $parser->ToHtml("[b]This text will be bold. [i]This text will be italic and bold.[/i][/b]");
-```
-
-The output of the previous code is the following:
-```HTML
-<b>This text will be bold. <i>This text will be italic and bold.</i></b>
-```
-
-By default, MorningBlue will escapes any HTML entities (`<, >, ', ", & `).
-This encoding can be disabled by passing a `false` value to the `toHtml` method of a BBCode parser object:
-```php
-$parser = new \Salyam\MorningBlue\BBCode();
-echo $parser->ToHtml("<p>This HTML tag will remain here.</p>", false);
 ```
 
 # Supported BBCode tags #
