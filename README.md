@@ -115,6 +115,7 @@ MorningBlue also provides a Blade directive, which uses the global BBCode parser
 
         [sup] Text [/sup]
   * Headings:
+  
         [h1]Test[/h1]
         [h2]Test[/h2]
         [h3]Test[/h3]
