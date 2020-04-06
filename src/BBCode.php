@@ -142,6 +142,36 @@ final class BBCode
                     'pattern' => '\[sup\](.*)\[\/sup\]',
                     'replace' => '<sup>$1</sup>'
                 ],
+            'h1' =>
+                [
+                    'pattern' => '\[h1\](.*)\[\/h1\]',
+                    'replace' => '<h1>$1</h1>'
+                ],
+            'h2' =>
+                [
+                    'pattern' => '\[h2\](.*)\[\/h2\]',
+                    'replace' => '<h2>$1</h2>'
+                ],
+            'h3' =>
+                [
+                    'pattern' => '\[h3\](.*)\[\/h3\]',
+                    'replace' => '<h3>$1</h3>'
+                ],
+            'h4' =>
+                [
+                    'pattern' => '\[h4\](.*)\[\/h4\]',
+                    'replace' => '<h4>$1</h4>'
+                ],
+            'h5' =>
+                [
+                    'pattern' => '\[h5\](.*)\[\/h5\]',
+                    'replace' => '<h5>$1</h5>'
+                ],
+            'h1' =>
+                [
+                    'pattern' => '\[h6\](.*)\[\/h6\]',
+                    'replace' => '<h6>$1</h6>'
+                ],
 
             // Images
 

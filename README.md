@@ -114,6 +114,13 @@ MorningBlue also provides a Blade directive, which uses the global BBCode parser
   * Superscript:
 
         [sup] Text [/sup]
+  * Headings:
+        [h1]Test[/h1]
+        [h2]Test[/h2]
+        [h3]Test[/h3]
+        [h4]Test[/h4]
+        [h5]Test[/h5]
+        [h6]Test[/h6]
         
 ## Images ##
 
@@ -246,6 +253,6 @@ Complex parser rule means that the BBCode tags will be found with a regex expres
 
 # Licence #
 
-Copyright (c) 2019 Salyamosy, Andras
+Copyright (c) 2020 Salyamosy, Andras
 
 Licenced under [MIT](LICENCE.md) Licence
